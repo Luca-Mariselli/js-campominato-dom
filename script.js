@@ -11,9 +11,16 @@ function cliccati(elemento, numero, bombe){
         if(bombe.includes(numero)){
             console.log(`hai cliccato sulla bomba ${numero}`)
             this.classList.toggle(`background-bomba`)
+            alert(`Hai perso`)
+            griglia.innerHTML = null
+            punteggio = 0
+            document.getElementById(`punteggio`).innerHTML = `Il tuo punteggio e: ${punteggio}`
+
         } else{
             console.log(`hai cliccato sul quadrato ${numero}`)
             this.classList.toggle(`background-safe`)
+            console.log(punteggio += 1)
+            document.getElementById(`punteggio`).innerHTML = `Il tuo punteggio e: ${punteggio}`
         }
     })
 }
@@ -26,12 +33,13 @@ function cliccati(elemento, numero, bombe){
 //     document.getElementById(elementID).innerHTML = null;
 // }
 
-let griglia = document.getElementById(`griglia`)
+let griglia = document.getElementById(`griglia`);
 let quadrato;
+let punteggio = 0;
 
 // creo pulsante avvia gioco
 // modalita easy
-let avvioEz = document.getElementById(`avvioEz`)
+let avvioEz = document.getElementById(`avvioEz`);
 
 avvioEz.addEventListener(`click`, function(){
     let bombe = Array.from({length: 16}, () => Math.floor(Math.random() * 100));
@@ -41,8 +49,8 @@ avvioEz.addEventListener(`click`, function(){
     }
     griglia.style.width = `1000px`
     for (var i=0; i <= 99; i++) {
-        let creazione = creaQuad(i)
-        let aggClasse = cliccati(quadrato, i, bombe)
+        let creazione = creaQuad(i);
+        let aggClasse = cliccati(quadrato, i, bombe);
         
     }
 
