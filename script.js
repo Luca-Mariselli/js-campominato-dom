@@ -6,12 +6,19 @@ function creaQuad(numero){
 }
 
 // creo funzione per eventlistener
-function cliccati(elemento, numero){
+function cliccati(elemento, numero, bombe){
     elemento.addEventListener(`click`, function () {
-        console.log(`hai cliccato sul quadrato ${numero}`)
-        this.classList.toggle(`background`)
+        if(bombe.includes(numero)){
+            console.log(`hai cliccato sulla bomba ${numero}`)
+            this.classList.toggle(`background-bomba`)
+        } else{
+            console.log(`hai cliccato sul quadrato ${numero}`)
+            this.classList.toggle(`background-safe`)
+        }
     })
 }
+
+
 
 // // creo funzione per svuotare griglia
 // function clearBox(elementID)
@@ -27,13 +34,16 @@ let quadrato;
 let avvioEz = document.getElementById(`avvioEz`)
 
 avvioEz.addEventListener(`click`, function(){
+    let bombe = Array.from({length: 16}, () => Math.floor(Math.random() * 100));
+    console.log(bombe)
     if(griglia.innerHTML != null){
         griglia.innerHTML = null
     }
     griglia.style.width = `1000px`
-    for (let i=1; i <= 100; i++) {
+    for (var i=0; i <= 99; i++) {
         let creazione = creaQuad(i)
-        let aggClasse = cliccati(quadrato, i)
+        let aggClasse = cliccati(quadrato, i, bombe)
+        
     }
 
 })
@@ -43,13 +53,15 @@ avvioEz.addEventListener(`click`, function(){
 let avvioMd = document.getElementById(`avvioMd`)
 
 avvioMd.addEventListener(`click`, function(){
+    let bombe = Array.from({length: 16}, () => Math.floor(Math.random() * 81));
+    console.log(bombe)
     if(griglia.innerHTML != null){
         griglia.innerHTML = null
     }
     griglia.style.width = `900px` 
-    for (let i=1; i <= 81; i++) {
+    for (let i=0; i <= 80; i++) {
         let creazione = creaQuad(i)
-        let aggClasse = cliccati(quadrato, i)
+        let aggClasse = cliccati(quadrato, i, bombe)
     }
 
 })
@@ -59,11 +71,13 @@ avvioMd.addEventListener(`click`, function(){
 let avvioHs = document.getElementById(`avvioHd`)
 
 avvioHd.addEventListener(`click`, function(){
+    let bombe = Array.from({length: 16}, () => Math.floor(Math.random() * 49));
+    console.log(bombe)
     if(griglia.innerHTML != null){
         griglia.innerHTML = null
     }
     griglia.style.width = `700px` 
-    for (let i=1; i <= 49; i++) {
+    for (let i=0; i <= 48; i++) {
         let creazione = creaQuad(i)
         let aggClasse = cliccati(quadrato, i)
     }

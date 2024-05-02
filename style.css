@@ -30,8 +30,12 @@ h1{
     padding: 3px;
 }
 
-.background{
+.background-bomba{
     background-color: crimson;
+}
+
+.background-safe{
+    background-color: aquamarine;
 }
 
 .bottoni{
