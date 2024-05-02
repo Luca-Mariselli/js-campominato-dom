@@ -10,11 +10,14 @@ html{
     color: white;
 }
 
-h1{
+h1,
+h2{
     margin-top: 2rem;
     margin-bottom: 2rem;
     text-align: center;
 }
+
+
 
 #griglia{
     display: flex;
