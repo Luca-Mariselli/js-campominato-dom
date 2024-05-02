@@ -14,13 +14,13 @@ function cliccati(elemento, numero, bombe){
             alert(`Hai perso`)
             griglia.innerHTML = null
             punteggio = 0
-            document.getElementById(`punteggio`).innerHTML = `Il tuo punteggio e: ${punteggio}`
+            document.getElementById(`punteggio`).innerHTML = `Il tuo punteggio è: ${punteggio}`
 
         } else{
             console.log(`hai cliccato sul quadrato ${numero}`)
             this.classList.toggle(`background-safe`)
             console.log(punteggio += 1)
-            document.getElementById(`punteggio`).innerHTML = `Il tuo punteggio e: ${punteggio}`
+            document.getElementById(`punteggio`).innerHTML = `Il tuo punteggio è: ${punteggio}`
         }
     })
 }
@@ -53,6 +53,9 @@ avvioEz.addEventListener(`click`, function(){
         let aggClasse = cliccati(quadrato, i, bombe);
         
     }
+    if(punteggio == 100 - 16){
+        alert(`HAI VINTO`)
+    }
 
 })
 
@@ -71,7 +74,9 @@ avvioMd.addEventListener(`click`, function(){
         let creazione = creaQuad(i)
         let aggClasse = cliccati(quadrato, i, bombe)
     }
-
+    if(punteggio == 81 - 16){
+        alert(`HAI VINTO`)
+    }
 })
 
 
@@ -87,7 +92,9 @@ avvioHd.addEventListener(`click`, function(){
     griglia.style.width = `700px` 
     for (let i=0; i <= 48; i++) {
         let creazione = creaQuad(i)
-        let aggClasse = cliccati(quadrato, i)
+        let aggClasse = cliccati(quadrato, i, bombe)
     }
-
+    if(punteggio == 49 - 16){
+        alert(`HAI VINTO`)
+    }
 })
