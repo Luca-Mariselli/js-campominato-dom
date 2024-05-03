@@ -22,6 +22,12 @@ function cliccati(elemento, numero, bombe){
             console.log(punteggio += 1)
             document.getElementById(`punteggio`).innerHTML = `Il tuo punteggio è: ${punteggio}`
         }
+        if(punteggio == numeroCelle - numeroBombe){
+            vittoria = true;
+            alert(`hai vinto`)
+            griglia.innerHTML = null
+            punteggio = 0
+        }
     })
 }
 
@@ -36,12 +42,16 @@ function cliccati(elemento, numero, bombe){
 let griglia = document.getElementById(`griglia`);
 let quadrato;
 let punteggio = 0;
+let numeroCelle;
+let numeroBombe = 16;
+let vittoria = false;
 
 // creo pulsante avvia gioco
 // modalita easy
 let avvioEz = document.getElementById(`avvioEz`);
 
 avvioEz.addEventListener(`click`, function(){
+    numeroCelle = 100
     let bombe = Array.from({length: 16}, () => Math.floor(Math.random() * 100));
     console.log(bombe)
     if(griglia.innerHTML != null){
@@ -53,9 +63,6 @@ avvioEz.addEventListener(`click`, function(){
         let aggClasse = cliccati(quadrato, i, bombe);
         
     }
-    if(punteggio == 100 - 16){
-        alert(`HAI VINTO`)
-    }
 
 })
 
@@ -64,6 +71,7 @@ avvioEz.addEventListener(`click`, function(){
 let avvioMd = document.getElementById(`avvioMd`)
 
 avvioMd.addEventListener(`click`, function(){
+    numeroCelle = 81
     let bombe = Array.from({length: 16}, () => Math.floor(Math.random() * 81));
     console.log(bombe)
     if(griglia.innerHTML != null){
@@ -74,9 +82,7 @@ avvioMd.addEventListener(`click`, function(){
         let creazione = creaQuad(i)
         let aggClasse = cliccati(quadrato, i, bombe)
     }
-    if(punteggio == 81 - 16){
-        alert(`HAI VINTO`)
-    }
+    
 })
 
 
@@ -84,6 +90,7 @@ avvioMd.addEventListener(`click`, function(){
 let avvioHs = document.getElementById(`avvioHd`)
 
 avvioHd.addEventListener(`click`, function(){
+    numeroCelle = 49
     let bombe = Array.from({length: 16}, () => Math.floor(Math.random() * 49));
     console.log(bombe)
     if(griglia.innerHTML != null){
@@ -93,8 +100,9 @@ avvioHd.addEventListener(`click`, function(){
     for (let i=0; i <= 48; i++) {
         let creazione = creaQuad(i)
         let aggClasse = cliccati(quadrato, i, bombe)
+        
+        
     }
-    if(punteggio == 49 - 16){
-        alert(`HAI VINTO`)
-    }
+    
+    
 })
